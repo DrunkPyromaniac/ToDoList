@@ -39,7 +39,7 @@ function App()
 
 	return (
 		<ToDoList items={items} categories={categories} />
-  );
+	);
 	}
 
 export default App;

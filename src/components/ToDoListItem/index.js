@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import defaultImage from './default.png';
 
 export class ToDoListItem extends React.Component
-  {
+	{
 	render()
 		{
 		const category = this.props.categories.find(x => x.id === this.props.category);
