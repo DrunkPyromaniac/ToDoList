@@ -12,7 +12,7 @@ export class ToDoListItem extends React.Component
 		const remove   = this.props.taskRemove   || (() => {});
 
 		return (
-			<div className={styles.container}>
+			<div className={styles.container + (this.props.completed ? ' ' + styles.completed : '')}>
 				<img src={defaultImage} alt="logo" className={styles.image} />
 				<div className={styles.title}>{this.props.title}</div>
 				<div className={styles.category} style={{ color: category.color }}>{"#" + category.name}</div>

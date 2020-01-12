@@ -30,7 +30,7 @@ export class ToDoList extends React.Component
 	completeItem(id)
 		{
 		const item = this.props.items.find(x => x.id === id);
-		item.completed = true;
+		item.completed = !item.completed;
 		this.forceUpdate();
 		}
 

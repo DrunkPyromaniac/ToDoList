@@ -9,6 +9,11 @@
 	grid-column-gap: 5px;
 	background-color: white;
 
+	&.completed
+		{
+		text-decoration: line-through;
+		}
+
 	&:hover
 		{
 		border-left: 3px solid goldenrod;
@@ -30,6 +35,10 @@
 	width: 50px;
 	border-radius: 50%;
 	object-fit: cover;
+	.completed &
+		{
+		filter: grayscale(100%);
+		}
 	}
 
 .title
