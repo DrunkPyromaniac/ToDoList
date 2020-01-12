@@ -7,11 +7,12 @@ export class ToDoListItem extends React.Component
   {
 	render()
 		{
+		const category = this.props.categories.find(x => x.id === this.props.category);
 		return (
 			<div className={styles.container}>
 				<div className={styles.image}><img src={defaultImage} /></div>
 				<div className={styles.title}>{this.props.title}</div>
-				<div className={styles.category}>#octothorpe</div>
+				<div className={styles.category} style={{ color: category.color }}>{"#" + category.name}</div>
 				<div className={styles.text}>{this.props.text}</div>
 			</div>
 		);

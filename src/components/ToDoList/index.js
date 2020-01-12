@@ -13,7 +13,7 @@ export class ToDoList extends React.Component
 				{
 				this.props.items.map(item =>
 					{
-					return <ToDoListItem key={item.id} {...item} />;
+					return <ToDoListItem key={item.id} {...item} categories={this.props.categories} />;
 					})
 				}
 			</div>
