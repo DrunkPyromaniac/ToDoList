@@ -14,8 +14,24 @@ export class ToDoList extends React.Component
 			newTask: "",
 			};
 
-		this.textChange = this.textChange.bind(this);
-		this.handleKey  = this.handleKey.bind(this);
+		this.textChange   = this.textChange.bind(this);
+		this.handleKey    = this.handleKey.bind(this);
+		this.removeItem   = this.removeItem.bind(this);
+		this.completeItem = this.completeItem.bind(this);
+		}
+
+	removeItem(id)
+		{
+		const item = this.props.items.find(x => x.id === id);
+		item.removed = true;
+		this.forceUpdate();
+		}
+
+	completeItem(id)
+		{
+		const item = this.props.items.find(x => x.id === id);
+		item.completed = true;
+		this.forceUpdate();
 		}
 
 	addItem(item)
@@ -53,7 +69,15 @@ export class ToDoList extends React.Component
 				{
 				this.props.items.map(item =>
 					{
-					return <ToDoListItem key={item.id} {...item} categories={this.props.categories} />;
+					if (item.removed)
+						return;
+
+					return <ToDoListItem
+						key={item.id}
+						categories={this.props.categories}
+						taskRemove={this.removeItem}
+						taskComplete={this.completeItem}
+						{...item} />;
 					})
 				}
 			</div>
