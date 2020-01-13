@@ -34,6 +34,7 @@ export class ToDoList extends React.Component
 		{
 		this.props.items.push(item);
 		this.forceUpdate();
+		return true;
 		}
 
 	render()

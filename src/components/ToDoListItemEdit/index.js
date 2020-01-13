@@ -15,13 +15,25 @@ export class ToDoListItem extends React.Component
 			text:     this.props.text     || '',
 			category: this.props.category || 0,
 			};
+
+		this.handleSave = this.handleSave.bind(this);
+		}
+
+	handleSave(event)
+		{
+		if (typeof(this.props.save) !== "function" || !this.props.save(this.state))
+			return;
+
+		this.setState(
+			{
+			title:    '',
+			text:     '',
+			category: 0,
+			});
 		}
 
 	render()
 		{
-		const category = this.props.categories.find(x => x.id === this.props.category) || {};
-		const save = this.props.save || (() => {});
-
 		return (
 			<div className={styles.container + (this.props.completed ? ' ' + styles.completed : '')}>
 				<img src={defaultImage} alt="logo" className={styles.image} />
@@ -43,7 +55,7 @@ export class ToDoListItem extends React.Component
 					<input type="text" value={this.state.text} placeholder="Notes" onChange={ (event) => { this.setState({ text: event.target.value }); } } />
 				</div>
 				<div className={styles.buttons}>
-					<button className={styles.save} alt="Save" onClick={() => save(this.state)}>+</button>
+					<button className={styles.save} alt="Save" onClick={this.handleSave}>+</button>
 				</div>
 			</div>
 		);
