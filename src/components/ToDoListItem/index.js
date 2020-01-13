@@ -7,7 +7,7 @@ export class ToDoListItem extends React.Component
 	{
 	render()
 		{
-		const category = this.props.categories.find(x => x.id === this.props.category);
+		const category = this.props.categories.find(x => x.id === this.props.category) || { name: 'Uncategorized' };
 		const complete = this.props.taskComplete || (() => {});
 		const remove   = this.props.taskRemove   || (() => {});
 

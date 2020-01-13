@@ -10,15 +10,10 @@ export class ToDoList extends React.Component
 	constructor(props)
 		{
 		super(props);
-		this.state =
-			{
-			newTask: "",
-			};
 
-		this.textChange   = this.textChange.bind(this);
-		this.handleKey    = this.handleKey.bind(this);
 		this.removeItem   = this.removeItem.bind(this);
 		this.completeItem = this.completeItem.bind(this);
+		this.addItem      = this.addItem.bind(this);
 		}
 
 	removeItem(id)
@@ -37,29 +32,8 @@ export class ToDoList extends React.Component
 
 	addItem(item)
 		{
-		const [title, text] = item.split("\n", 2);
-
-		this.props.items.push(
-			{
-			title,
-			text,
-			category: 1,
-			});
-		}
-
-	textChange(event)
-		{
-		this.setState({ newTask: event.target.value });
-		}
-
-	handleKey(event)
-		{
-		if (event.which === 13 && !event.shiftKey)
-			{
-			this.addItem(this.state.newTask);
-			this.setState({ newTask: "" });
-			event.preventDefault();
-			}
+		this.props.items.push(item);
+		this.forceUpdate();
 		}
 
 	render()

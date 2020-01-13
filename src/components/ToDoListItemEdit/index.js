@@ -5,6 +5,18 @@ import defaultImage from './default.png';
 
 export class ToDoListItem extends React.Component
 	{
+	constructor(props)
+		{
+		super(props);
+
+		this.state =
+			{
+			title:    this.props.title    || '',
+			text:     this.props.text     || '',
+			category: this.props.category || 0,
+			};
+		}
+
 	render()
 		{
 		const category = this.props.categories.find(x => x.id === this.props.category) || {};
@@ -13,11 +25,25 @@ export class ToDoListItem extends React.Component
 		return (
 			<div className={styles.container + (this.props.completed ? ' ' + styles.completed : '')}>
 				<img src={defaultImage} alt="logo" className={styles.image} />
-				<div className={styles.title}>{this.props.title}</div>
-				<div className={styles.category} style={{ color: category.color }}>{"#" + category.name}</div>
-				<div className={styles.text}>{this.props.text}</div>
+				<div className={styles.title}>
+					<input type="text" value={this.state.title} placeholder="Title" onChange={ (event) => { this.setState({ title: event.target.value }); } } />
+				</div>
+				<div className={styles.category}>
+					<select value={this.state.category} onChange={ (event) => { this.setState({ category: event.target.value }); } }>
+						<option value={0}>...</option>
+						{
+						this.props.categories.map((category, i) =>
+							{
+							return <option value={category.id}>{category.name}</option>;
+							})
+						}
+					</select>
+				</div>
+				<div className={styles.text}>
+					<input type="text" value={this.state.text} onChange={ (event) => { this.setState({ text: event.target.value }); } } />
+				</div>
 				<div className={styles.buttons}>
-					<button className={styles.complete} alt="Save" onClick={() => save(this.props)}>+</button>
+					<button className={styles.complete} alt="Save" onClick={() => save(this.state)}>+</button>
 				</div>
 			</div>
 		);
