@@ -40,10 +40,10 @@ export class ToDoListItem extends React.Component
 					</select>
 				</div>
 				<div className={styles.text}>
-					<input type="text" value={this.state.text} onChange={ (event) => { this.setState({ text: event.target.value }); } } />
+					<input type="text" value={this.state.text} placeholder="Notes" onChange={ (event) => { this.setState({ text: event.target.value }); } } />
 				</div>
 				<div className={styles.buttons}>
-					<button className={styles.complete} alt="Save" onClick={() => save(this.state)}>+</button>
+					<button className={styles.save} alt="Save" onClick={() => save(this.state)}>+</button>
 				</div>
 			</div>
 		);

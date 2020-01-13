@@ -15,6 +15,14 @@
 		{
 		text-decoration: line-through;
 		}
+
+	input
+		{
+		width: calc(100% - 8px);
+		border: 1px solid lightgrey;
+		border-radius: 3px;
+		padding: 3px;
+		}
 	}
 
 .image
@@ -37,15 +45,12 @@
 	{
 	grid-row: 1;
 	grid-column: 2;
-	font-weight: 700;
 	}
 
 .text
 	{
 	grid-row: 2;
 	grid-column: 2;
-	font-size: 90%;
-	color: grey;
 	}
 
 .category
@@ -56,6 +61,7 @@
 	justify-self: right;
 	align-self: center;
 	padding-right: 10px;
+	padding-left: 10px;
 	}
 
 .buttons
@@ -70,16 +76,9 @@
 		}
 	}
 
-.complete
+.save
 	{
 	border-color: lighten(green, 30%);
 	background-color: green;
-	color: white;
-	}
-
-.remove
-	{
-	border-color: lighten(red, 30%);
-	background-color: red;
 	color: white;
 	}
