@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ToDoListItem from 'components/ToDoListItem';
+import ToDoListItemEdit from 'components/ToDoListItemEdit';
 
 import styles from './styles.module.scss';
 
@@ -65,7 +66,7 @@ export class ToDoList extends React.Component
 		{
 		return (
 			<div className={styles.container}>
-				<textarea placeholder="Add Task..." value={this.state.newTask} onChange={this.textChange} onKeyPress={this.handleKey} rows={2} />
+				<ToDoListItemEdit save={this.addItem} categories={this.props.categories} />
 				{
 				this.props.items.map(item =>
 					{
